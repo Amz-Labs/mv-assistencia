@@ -1,0 +1,15 @@
+{
+  "name": "MV Assistência",
+  "short_name": "MVAssistência",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F8F9FA",
+  "theme_color": "#003366",
+  "icons": [
+    {
+      "src": "assets/img/brand/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

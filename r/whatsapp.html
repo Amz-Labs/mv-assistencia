@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecionando para o WhatsApp...</title>
+
+  <!-- não indexar -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- opcional: favicon -->
+  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
+    .wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .card { max-width: 720px; width: 100%; background: #fff; border-radius: 14px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    h1 { margin: 0 0 8px; font-size: 22px; }
+    p { margin: 0; color: #444; }
+    .small { margin-top: 12px; font-size: 13px; opacity: .8; }
+    a { color: #003366; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Redirecionando para o WhatsApp…</h1>
+      <p>Se não abrir automaticamente, clique no link abaixo:</p>
+      <p class="small">
+        <a id="manualLink" href="#" rel="noopener noreferrer">Abrir WhatsApp agora</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      // ==== CONFIG ====
+      const phone = "5511958434011";
+      const defaultMsg = "Olá! Preciso de assistência 24h.";
+      const endpoint = ""; // opcional: "https://SEU-ENDPOINT.com/track"
+
+      // parâmetro opcional pra identificar de onde veio (hero, floating, footer...)
+      const params = new URLSearchParams(location.search);
+      const src = params.get("src") || "unknown";
+      const msg = params.get("msg") || defaultMsg;
+
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}&utm_source=site&utm_medium=redirect&utm_campaign=whatsapp&src=${encodeURIComponent(src)}`;
+
+      // link manual
+      const manual = document.getElementById("manualLink");
+      manual.href = waUrl;
+      manual.target = "_blank";
+
+      // ==== 1) TRACKING via GA4 (se tiver gtag) ====
+      if (window.gtag) {
+        window.gtag("event", "click_whatsapp", {
+          event_category: "engagement",
+          event_label: src
+        });
+      }
+
+      // ==== 2) ENDPOINT externo (opcional) ====
+      // ideia: registrar clique mesmo se analytics estiver bloqueado
+      if (endpoint) {
+        try {
+          // sendBeacon é ideal pra tracking porque não bloqueia redirect
+          const payload = {
+            event: "click_whatsapp",
+            src,
+            path: document.referrer || null,
+            ts: Date.now(),
+            ua: navigator.userAgent
+          };
+          navigator.sendBeacon(endpoint, JSON.stringify(payload));
+        } catch (e) {}
+      }
+
+      // ==== 3) Redirect ====
+      // pequeno delay só pra garantir que beacon/gtag enviem
+      setTimeout(() => {
+        window.location.replace(waUrl);
+      }, 250);
+    })();
+  </script>
+</body>
+</html>

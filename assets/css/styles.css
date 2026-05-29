@@ -675,11 +675,6 @@ nav ul li a:hover {
   background: #25D366;
   color: white;
   border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 28px;
-  font-size: 1.1rem;
 }
 
 .emergency-buttons {
@@ -696,6 +691,21 @@ nav ul li a:hover {
   color: white;
   border: none;
   box-shadow: 0 12px 26px rgba(3,17,38,0.25);
+}
+
+.emergency-buttons .btn-call,
+.emergency-buttons .btn-whatsapp {
+  height: 54px;
+  min-width: 205px;
+  padding: 0 28px;
+  margin-top: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  line-height: 1;
 }
 
 .emergency .btn-call:hover {

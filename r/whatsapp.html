@@ -3,10 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Redirecionando para o WhatsApp...</title>
 
   <!-- não indexar -->
   <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Tag Manager -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event:'gtm.js'
+      });
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MV3KL8NV');
+  </script>
+  <!-- End Google Tag Manager -->
 
   <!-- opcional: favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
@@ -21,7 +42,19 @@
     a { color: #003366; font-weight: 600; }
   </style>
 </head>
+
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-MV3KL8NV"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <main class="wrap">
     <section class="card">
       <h1>Redirecionando para o WhatsApp…</h1>
@@ -39,7 +72,10 @@
       const defaultMsg = "Olá! Preciso de assistência 24h.";
       const endpoint = ""; // opcional: "https://SEU-ENDPOINT.com/track"
 
-      // parâmetro opcional pra identificar de onde veio (hero, floating, footer...)
+      // parâmetro opcional para identificar de onde veio:
+      // Ex: /r/whatsapp.html?src=hero
+      // Ex: /r/whatsapp.html?src=footer
+      // Ex: /r/whatsapp.html?src=404
       const params = new URLSearchParams(location.search);
       const src = params.get("src") || "unknown";
       const msg = params.get("msg") || defaultMsg;
@@ -51,19 +87,21 @@
       manual.href = waUrl;
       manual.target = "_blank";
 
-      // ==== 1) TRACKING via GA4 (se tiver gtag) ====
-      if (window.gtag) {
-        window.gtag("event", "click_whatsapp", {
-          event_category: "engagement",
-          event_label: src
-        });
-      }
+      // ==== 1) TRACKING via Google Tag Manager / DataLayer ====
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "click_whatsapp",
+        event_category: "engagement",
+        event_label: src,
+        whatsapp_source: src,
+        page_path: window.location.pathname,
+        referrer: document.referrer || null
+      });
 
-      // ==== 2) ENDPOINT externo (opcional) ====
+      // ==== 2) ENDPOINT externo opcional ====
       // ideia: registrar clique mesmo se analytics estiver bloqueado
       if (endpoint) {
         try {
-          // sendBeacon é ideal pra tracking porque não bloqueia redirect
           const payload = {
             event: "click_whatsapp",
             src,
@@ -71,15 +109,16 @@
             ts: Date.now(),
             ua: navigator.userAgent
           };
+
           navigator.sendBeacon(endpoint, JSON.stringify(payload));
         } catch (e) {}
       }
 
       // ==== 3) Redirect ====
-      // pequeno delay só pra garantir que beacon/gtag enviem
+      // pequeno delay para dar tempo do GTM/DataLayer processar o evento
       setTimeout(() => {
         window.location.replace(waUrl);
-      }, 250);
+      }, 500);
     })();
   </script>
 </body>

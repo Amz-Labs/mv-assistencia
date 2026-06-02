@@ -3,10 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página não encontrada | MMV Assistência</title>
+
+  <title>Página não encontrada | MV Assistência</title>
   <meta name="robots" content="noindex" />
+
+  <!-- Google Tag Manager -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event:'gtm.js'
+      });
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MV3KL8NV');
+  </script>
+  <!-- End Google Tag Manager -->
+
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
   <style>
     /* fallback caso o styles.css falhe */
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
@@ -20,7 +43,19 @@
     .ghost { background: #f3f4f6; color: #111; }
   </style>
 </head>
+
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-MV3KL8NV"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <main class="wrap">
     <section class="card">
       <h1>Ops… página não encontrada (404)</h1>
@@ -28,7 +63,7 @@
 
       <div class="actions">
         <a class="btn404 primary" href="index.html">Voltar para o início</a>
-        <a class="btn404 ghost" href="r/whatsapp.html">Falar no WhatsApp</a>
+        <a class="btn404 ghost" href="r/whatsapp.html?src=404">Falar no WhatsApp</a>
         <a class="btn404 ghost" href="tel:11958434011">Ligar agora</a>
       </div>
     </section>

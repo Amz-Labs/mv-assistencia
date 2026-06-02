@@ -81,59 +81,61 @@
 
         <div class="form-body">
 
-          <form method="POST" action="https://formspree.io/f/xeeeeawd">
-            <input type="hidden" name="_redirect" value="obrigado.html" />
-            <input type="hidden" name="_subject" value="Novo candidato - Trabalhe Conosco (MV Assistência)" />
-
+          <form
+            id="formTrabalheConosco"
+            method="POST"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSdZkKAODiNojkYG1IiENlwqDFoBNhy-42-s3RMfHKFRy4fIHQ/formResponse"
+            target="hidden_iframe"
+          >
             <div class="grid">
 
               <div class="row">
                 <div>
                   <label for="nome">Nome completo</label>
-                  <input id="nome" name="nome" type="text" autocomplete="name" required />
+                  <input id="nome" name="entry.516682413" type="text" autocomplete="name" required />
                 </div>
 
                 <div>
                   <label for="idade">Idade</label>
-                  <input id="idade" name="idade" type="number" min="16" max="90" placeholder="Ex: 28" required />
+                  <input id="idade" name="entry.1250538874" type="number" min="16" max="90" placeholder="Ex: 28" required />
                 </div>
               </div>
 
               <div class="row">
                 <div>
                   <label for="telefone">Telefone / WhatsApp</label>
-                  <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required />
+                  <input id="telefone" name="entry.1391041164" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required />
                 </div>
 
                 <div>
                   <label for="email">E-mail para contato</label>
-                  <input id="email" name="email" type="email" autocomplete="email" required />
+                  <input id="email" name="entry.661769984" type="email" autocomplete="email" required />
                 </div>
               </div>
 
               <div class="row">
                 <div>
                   <label for="profissao">Profissão</label>
-                  <select id="profissao" name="profissao" required>
+                  <select id="profissao" name="entry.1854745532" required>
                     <option value="" disabled selected>Selecione</option>
-                    <option>Chaveiro(a)</option>
-                    <option>Técnico(a) de fechadura eletrônica</option>
-                    <option>Instalador(a)</option>
-                    <option>Atendimento / Comercial</option>
-                    <option>Auxiliar / Aprendiz</option>
-                    <option>Outro</option>
+                    <option value="Chaveiro(a)">Chaveiro(a)</option>
+                    <option value="Técnico(a) de fechadura eletrônica">Técnico(a) de fechadura eletrônica</option>
+                    <option value="Instalador(a)">Instalador(a)</option>
+                    <option value="Atendimento / Comercial">Atendimento / Comercial</option>
+                    <option value="Auxiliar / Aprendiz">Auxiliar / Aprendiz</option>
+                    <option value="Outro">Outro</option>
                   </select>
                 </div>
 
                 <div>
                   <label for="experiencia">Tempo de experiência</label>
-                  <select id="experiencia" name="experiencia" required>
+                  <select id="experiencia" name="entry.1237758506" required>
                     <option value="" disabled selected>Selecione</option>
-                    <option>Sem experiência (quero aprender)</option>
-                    <option>Menos de 1 ano</option>
-                    <option>1 a 2 anos</option>
-                    <option>3 a 5 anos</option>
-                    <option>Mais de 5 anos</option>
+                    <option value="Sem experiência (quero aprender)">Sem experiência (quero aprender)</option>
+                    <option value="Menos de 1 ano">Menos de 1 ano</option>
+                    <option value="1 a 2 anos">1 a 2 anos</option>
+                    <option value="3 a 5 anos">3 a 5 anos</option>
+                    <option value="Mais de 5 anos">Mais de 5 anos</option>
                   </select>
                 </div>
               </div>
@@ -143,25 +145,25 @@
               <div class="row">
                 <div>
                   <label for="locomocao">Meio de locomoção</label>
-                  <select id="locomocao" name="locomocao" required>
+                  <select id="locomocao" name="entry.1103546071" required>
                     <option value="" disabled selected>Selecione</option>
-                    <option>Carro</option>
-                    <option>Moto</option>
-                    <option>Bicicleta</option>
-                    <option>Transporte público</option>
-                    <option>Outro</option>
+                    <option value="Carro">Carro</option>
+                    <option value="Moto">Moto</option>
+                    <option value="Bicicleta">Bicicleta</option>
+                    <option value="Transporte público">Transporte público</option>
+                    <option value="Outro">Outro</option>
                   </select>
                 </div>
 
                 <div>
                   <label for="cnh">CNH</label>
-                  <select id="cnh" name="cnh" required>
+                  <select id="cnh" name="entry.359779102" required>
                     <option value="" disabled selected>Selecione</option>
-                    <option>Não possuo</option>
-                    <option>Categoria A</option>
-                    <option>Categoria B</option>
-                    <option>Categoria AB</option>
-                    <option>Outra</option>
+                    <option value="Não possuo">Não possuo</option>
+                    <option value="Categoria A">Categoria A</option>
+                    <option value="Categoria B">Categoria B</option>
+                    <option value="Categoria AB">Categoria AB</option>
+                    <option value="Outra">Outra</option>
                   </select>
                 </div>
               </div>
@@ -169,19 +171,19 @@
               <div class="row">
                 <div>
                   <label for="turno">Disponibilidade</label>
-                  <select id="turno" name="disponibilidade" required>
+                  <select id="turno" name="entry.1454951117" required>
                     <option value="" disabled selected>Selecione</option>
-                    <option>Diurno</option>
-                    <option>Noturno</option>
-                    <option>Escala 12x36</option>
-                    <option>Plantão / emergencial</option>
-                    <option>A combinar</option>
+                    <option value="Diurno">Diurno</option>
+                    <option value="Noturno">Noturno</option>
+                    <option value="Escala 12x36">Escala 12x36</option>
+                    <option value="Plantão / emergencial">Plantão / emergencial</option>
+                    <option value="A combinar">A combinar</option>
                   </select>
                 </div>
 
                 <div>
                   <label for="regiao">Região de atendimento</label>
-                  <input id="regiao" name="regiao" type="text" placeholder="Ex: Zona Sul / Centro / ABC" required />
+                  <input id="regiao" name="entry.1167490031" type="text" placeholder="Ex: Zona Sul / Centro / ABC" required />
                 </div>
               </div>
 
@@ -189,7 +191,7 @@
                 <label for="msg">Conte sobre você</label>
                 <textarea
                   id="msg"
-                  name="mensagem"
+                  name="entry.402823593"
                   required
                   placeholder="Ex: já trabalhei com abertura automotiva/residencial, tenho disponibilidade imediata, moro na Zona Sul..."
                 ></textarea>
@@ -199,18 +201,31 @@
                 </p>
               </div>
 
-              <input type="text" name="_gotcha" style="display:none" />
-
               <div class="actions">
-                <button class="btn2 primary" type="submit">
+                <button
+                  class="btn2 primary"
+                  type="submit"
+                  data-event="click_enviar_candidatura"
+                  data-source="jobs_page"
+                >
                   Enviar candidatura
                 </button>
 
-                <a class="btn2 ghost" href="index.html">
+                <a
+                  class="btn2 ghost"
+                  href="index.html"
+                  data-event="click_voltar_site"
+                  data-source="jobs_page"
+                >
                   Voltar ao site
                 </a>
 
-                <a class="btn2 ghost" href="https://wa.me/5511958434011" target="_blank" rel="noopener noreferrer">
+                <a
+                  class="btn2 ghost"
+                  href="r/whatsapp.html?src=jobs_page"
+                  data-event="click_whatsapp"
+                  data-source="jobs_page"
+                >
                   Falar no WhatsApp
                 </a>
               </div>
@@ -222,10 +237,61 @@
             </div>
           </form>
 
+          <iframe
+            name="hidden_iframe"
+            id="hidden_iframe"
+            style="display:none;"
+          ></iframe>
+
         </div>
       </section>
     </div>
   </main>
+
+  <script>
+    (function () {
+      const form = document.getElementById("formTrabalheConosco");
+      const iframe = document.getElementById("hidden_iframe");
+
+      let formSubmitted = false;
+
+      if (!form || !iframe) return;
+
+      form.addEventListener("submit", function () {
+        const profissao = document.getElementById("profissao")?.value || "";
+        const experiencia = document.getElementById("experiencia")?.value || "";
+        const locomocao = document.getElementById("locomocao")?.value || "";
+        const cnh = document.getElementById("cnh")?.value || "";
+        const turno = document.getElementById("turno")?.value || "";
+
+        formSubmitted = true;
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "form_submit_trabalhe_conosco",
+          event_category: "lead",
+          event_label: "jobs_page",
+          form_name: "trabalhe_conosco",
+          form_source: "jobs_page",
+          profissao: profissao,
+          experiencia: experiencia,
+          locomocao: locomocao,
+          cnh: cnh,
+          disponibilidade: turno,
+          page_path: window.location.pathname,
+          referrer: document.referrer || null
+        });
+      });
+
+      iframe.addEventListener("load", function () {
+        if (!formSubmitted) return;
+
+        setTimeout(function () {
+          window.location.href = "obrigado.html";
+        }, 600);
+      });
+    })();
+  </script>
 
   <script defer src="assets/js/app.js"></script>
 </body>

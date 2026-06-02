@@ -29,7 +29,7 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- opcional: favicon -->
+  <!-- favicon -->
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
 
   <style>
@@ -59,8 +59,17 @@
     <section class="card">
       <h1>Redirecionando para o WhatsApp…</h1>
       <p>Se não abrir automaticamente, clique no link abaixo:</p>
+
       <p class="small">
-        <a id="manualLink" href="#" rel="noopener noreferrer">Abrir WhatsApp agora</a>
+        <a
+          id="manualLink"
+          href="#"
+          rel="noopener noreferrer"
+          data-event="click_whatsapp_manual"
+          data-source="manual_redirect_link"
+        >
+          Abrir WhatsApp agora
+        </a>
       </p>
     </section>
   </main>
@@ -74,18 +83,40 @@
 
       // parâmetro opcional para identificar de onde veio:
       // Ex: /r/whatsapp.html?src=hero
-      // Ex: /r/whatsapp.html?src=footer
+      // Ex: /r/whatsapp.html?src=footer_social
+      // Ex: /r/whatsapp.html?src=floating_button
+      // Ex: /r/whatsapp.html?src=emergency_button
       // Ex: /r/whatsapp.html?src=404
-      const params = new URLSearchParams(location.search);
+      const params = new URLSearchParams(window.location.search);
       const src = params.get("src") || "unknown";
       const msg = params.get("msg") || defaultMsg;
 
       const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}&utm_source=site&utm_medium=redirect&utm_campaign=whatsapp&src=${encodeURIComponent(src)}`;
 
-      // link manual
       const manual = document.getElementById("manualLink");
+      let redirected = false;
+
+      function redirectToWhatsApp() {
+        if (redirected) return;
+        redirected = true;
+        window.location.replace(waUrl);
+      }
+
+      // link manual
       manual.href = waUrl;
       manual.target = "_blank";
+
+      manual.addEventListener("click", function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "click_whatsapp_manual",
+          event_category: "engagement",
+          event_label: src,
+          whatsapp_source: src,
+          page_path: window.location.pathname,
+          referrer: document.referrer || null
+        });
+      });
 
       // ==== 1) TRACKING via Google Tag Manager / DataLayer ====
       window.dataLayer = window.dataLayer || [];
@@ -95,7 +126,9 @@
         event_label: src,
         whatsapp_source: src,
         page_path: window.location.pathname,
-        referrer: document.referrer || null
+        referrer: document.referrer || null,
+        event_callback: redirectToWhatsApp,
+        event_timeout: 1000
       });
 
       // ==== 2) ENDPOINT externo opcional ====
@@ -114,11 +147,9 @@
         } catch (e) {}
       }
 
-      // ==== 3) Redirect ====
-      // pequeno delay para dar tempo do GTM/DataLayer processar o evento
-      setTimeout(() => {
-        window.location.replace(waUrl);
-      }, 500);
+      // ==== 3) Redirect fallback ====
+      // caso o callback do GTM não execute, redireciona mesmo assim
+      setTimeout(redirectToWhatsApp, 1200);
     })();
   </script>
 </body>

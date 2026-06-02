@@ -62,11 +62,46 @@
       <p>A URL que você acessou não existe ou foi movida.</p>
 
       <div class="actions">
-        <a class="btn404 primary" href="index.html">Voltar para o início</a>
-        <a class="btn404 ghost" href="r/whatsapp.html?src=404">Falar no WhatsApp</a>
-        <a class="btn404 ghost" href="tel:11958434011">Ligar agora</a>
+        <a
+          class="btn404 primary"
+          href="index.html"
+          data-event="click_voltar_site"
+          data-source="404_page"
+        >
+          Voltar para o início
+        </a>
+
+        <a
+          class="btn404 ghost"
+          href="r/whatsapp.html?src=404"
+          data-event="click_whatsapp"
+          data-source="404_page"
+        >
+          Falar no WhatsApp
+        </a>
+
+        <a
+          class="btn404 ghost"
+          href="tel:11958434011"
+          data-event="click_ligar"
+          data-source="404_page"
+        >
+          Ligar agora
+        </a>
       </div>
     </section>
   </main>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: "view_404",
+      page_type: "error",
+      error_code: "404",
+      page_path: window.location.pathname,
+      referrer: document.referrer || null
+    });
+  </script>
 </body>
 </html>

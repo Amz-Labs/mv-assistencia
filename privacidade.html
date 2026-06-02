@@ -195,12 +195,22 @@
         </div>
 
         <div class="policy-actions">
-          <a href="index.html" class="btn btn-primary">
+          <a
+            href="index.html"
+            class="btn btn-primary"
+            data-event="click_voltar_site"
+            data-source="privacy_page"
+          >
             <i class="fas fa-arrow-left"></i>
             Voltar para o site
           </a>
 
-          <a href="https://wa.me/5511958434011" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <a
+            href="r/whatsapp.html?src=privacy_page"
+            class="btn btn-whatsapp"
+            data-event="click_whatsapp"
+            data-source="privacy_page"
+          >
             <i class="fab fa-whatsapp"></i>
             Falar no WhatsApp
           </a>
@@ -230,9 +240,32 @@
           </p>
 
           <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/5511958434011" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/mv_assistencia_24h/"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="click_instagram"
+              data-source="privacy_footer"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="#"
+              aria-label="Facebook"
+              data-event="click_facebook"
+              data-source="privacy_footer"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a
+              href="r/whatsapp.html?src=privacy_footer"
+              aria-label="WhatsApp"
+              data-event="click_whatsapp"
+              data-source="privacy_footer"
+            >
               <i class="fab fa-whatsapp"></i>
             </a>
           </div>
@@ -272,7 +305,12 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/5511958434011" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+  <a
+    href="r/whatsapp.html?src=privacy_floating_button"
+    class="whatsapp-button"
+    data-event="click_whatsapp"
+    data-source="privacy_floating_button"
+  >
     <img src="assets/img/ui/icone-whatsapp.png" alt="WhatsApp MV Assistência">
   </a>
 

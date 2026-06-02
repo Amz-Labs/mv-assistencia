@@ -57,10 +57,37 @@
       <p>Recebemos seus dados. Se o seu perfil combinar com a oportunidade, entraremos em contato em breve.</p>
 
       <div class="actions">
-        <a class="btn" href="index.html">Voltar ao site</a>
-        <a class="btn ghost" href="r/whatsapp.html?src=thanks_jobs">Falar no WhatsApp</a>
+        <a
+          class="btn"
+          href="index.html"
+          data-event="click_voltar_site"
+          data-source="thanks_jobs"
+        >
+          Voltar ao site
+        </a>
+
+        <a
+          class="btn ghost"
+          href="r/whatsapp.html?src=thanks_jobs"
+          data-event="click_whatsapp"
+          data-source="thanks_jobs"
+        >
+          Falar no WhatsApp
+        </a>
       </div>
     </section>
   </main>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: "view_obrigado",
+      page_type: "thank_you",
+      page_context: "trabalhe_conosco",
+      page_path: window.location.pathname,
+      referrer: document.referrer || null
+    });
+  </script>
 </body>
 </html>

@@ -1231,3 +1231,66 @@ textarea {
     width: 100%;
   }
 }
+
+/* ============================= */
+/* AJUSTE RESPONSIVO HERO IMAGE */
+/* ============================= */
+
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image picture {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 540px;
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 540px;
+  border-radius: 34px;
+  border: 3px solid rgba(57,211,83,0.36);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,0.42),
+    0 0 45px rgba(11,124,255,0.18);
+  object-fit: contain;
+  object-position: center center;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 6px;
+  }
+
+  .hero-image picture {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 24px;
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-image picture,
+  .hero-image img {
+    max-width: 100%;
+  }
+}
